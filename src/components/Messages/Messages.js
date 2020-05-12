@@ -218,16 +218,17 @@ class Messages extends React.Component {
     return channel ? `${this.state.privateChannel ? '@' : '#'}${channel.name}` : ''
   }
 
-  displayTypingUsers = users => {
-    users.length > 0 && users.map(user => (
+  displayTypingUsers = users => (
+    users.length > 0 &&
+    users.map(user => (
       <div
         key={user.id}
         style={{ display: 'flex', alignItems: 'center', marginBottom: '0.2em' }}
       >
-        <span className="user__typing">{user.handleSearchMessages} is typing</span> <Typing />
+        <span className="user__typing">{user.name} is typing</span> <Typing />
       </div>
     ))
-  }
+  )
 
   render() {
     const {
