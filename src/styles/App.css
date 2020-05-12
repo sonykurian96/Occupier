@@ -45,3 +45,23 @@ body,
 .progress__bar {
   margin: 0.3em 0 0 0 !important;
 }
+
+/* ColorPanel.js */
+.color__container {
+  border-radius: 3px;
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+  width: 35px;
+}
+
+.color__square {
+  height: 35px;
+  width: 35px;
+}
+
+.color__overlay {
+  height: 35px;
+  transform: rotate(225deg);
+  width: 85px;
+}
