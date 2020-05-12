@@ -7,16 +7,17 @@ import ProgressBar from './ProgressBar'
 
 class MessageForm extends React.Component {
   state = {
+    storageRef: firebase.storage().ref(),
+    typingRef: firebase.database().ref('typing'),
+    uploadTask: null,
+    uploadState: '',
+    percentUploaded: 0,
     message: '',
     channel: this.props.currentChannel,
     user: this.props.currentUser,
     loading: false,
     errors: [],
-    modal: false,
-    uploadState: '',
-    uploadTask: null,
-    storageRef: firebase.storage().ref(),
-    percentUploaded: 0
+    modal: false
   }
   
   openModal = () => this.setState({ modal: true })
@@ -25,6 +26,22 @@ class MessageForm extends React.Component {
 
   handleChange = e => {
     this.setState({ [e.target.name]: e.target.value })
+  }
+
+  handleKeyDown = () => {
+    const { message, typingRef, channel, user } = this.state
+
+    if (message) {
+      typingRef
+        .child(channel.id)
+        .child(user.uid)
+        .set(user.displayName)
+    } else {
+      typingRef
+        .child(channel.id)
+        .child(user.uid)
+        .remove()
+    }
   }
 
   createMessage = (fileUrl = null) => {
@@ -47,7 +64,7 @@ class MessageForm extends React.Component {
   sendMessage = (e) => {
     e.preventDefault()
     const { getMessagesRef } = this.props
-    const { message,channel } = this.state
+    const { message, channel, user, typingRef } = this.state
 
     if (message) {
       this.setState({ loading: true })
@@ -57,6 +74,10 @@ class MessageForm extends React.Component {
         .set(this.createMessage())
         .then(() => {
           this.setState({ loading: false, message: '', errors: [] })
+          typingRef
+            .child(channel.id)
+            .child(user.uid)
+            .remove()
         })
         .catch(err => {
           console.error(err)
@@ -140,6 +161,7 @@ class MessageForm extends React.Component {
             fluid
             name="message"
             onChange={this.handleChange}
+            onKeyDown={this.handleKeyDown}
             value={message}
             style={{ marginBottom: '0.7em' }}
             label={<Button icon={'add'} />}
