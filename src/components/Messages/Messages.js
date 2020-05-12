@@ -7,6 +7,7 @@ import MessagesHeader from './MessagesHeader'
 import MessageForm from './MessageForm'
 import Message from './Message'
 import Typing from './Typing'
+import Skeleton from './Skeleton'
 
 class Messages extends React.Component {
   state = {
@@ -36,6 +37,16 @@ class Messages extends React.Component {
       this.addListeners(channel.id)
       this.addUserStarsListener(channel.id, user.uid)
     }
+  }
+
+  componentDidUpdate = (prevProps, prevState) => {
+    if (this.messagesEnd) {
+      this.scrollToBottom()
+    }
+  }
+
+  scrollToBottom = () => {
+    this.messagesEnd.scrollIntoView({ behavior: 'smooth' })
   }
 
   addListeners = channelId => {
@@ -230,6 +241,16 @@ class Messages extends React.Component {
     ))
   )
 
+  displayMessageSkeleton = loading => (
+    loading ? (
+      <React.Fragment>
+        {[...Array(10)].map((_, i)=> (
+          <Skeleton key={i} />
+        ))}
+      </React.Fragment>
+    ) : null
+  )
+
   render() {
     const {
       messagesRef,
@@ -243,7 +264,8 @@ class Messages extends React.Component {
       searchLoading,
       privateChannel,
       isChannelStarred,
-      typingUsers
+      typingUsers,
+      messagesLoading
     } = this.state
 
     return (
@@ -263,11 +285,13 @@ class Messages extends React.Component {
             'messages messages--progress' :
             'messages'
           }>
+            {this.displayMessageSkeleton(messagesLoading)}
             {searchTerm ? 
               this.displayMessages(searchResults) : 
               this.displayMessages(messages)
             }
             {this.displayTypingUsers(typingUsers)}
+            <div ref={node => (this.messagesEnd = node)}></div>
           </Comment.Group>
         </Segment>
 
