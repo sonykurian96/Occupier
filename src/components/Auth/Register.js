@@ -127,8 +127,8 @@ class Register extends React.Component {
       <Grid textAlign="center" verticalAlign="middle" className="app">
         <Grid.Column style={{ maxWidth: 450 }}>
           <Header as="h1" icon color="orange" textAlign="center">
-            <Icon name="puzzle piece" color="orange" />
-            Register for DevChat
+          <img style={{width:390,height:100}} src={require("./alogo.png")} alt='error'/>
+            Register
           </Header>
           <Form onSubmit={this.handleSubmit} size="large">
             <Segment stacked>

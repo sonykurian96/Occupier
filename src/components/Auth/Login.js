@@ -7,7 +7,6 @@ import {
   Button,
   Header,
   Message,
-  Icon
 } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 
@@ -62,8 +61,8 @@ class Login extends React.Component {
       <Grid textAlign="center" verticalAlign="middle" className="app">
         <Grid.Column style={{ maxWidth: 450 }}>
           <Header as="h1" icon color="violet" textAlign="center">
-            <Icon name="code branch" color="violet" />
-            Login to DevChat
+            <img style={{width:390,height:100}} src={require("./alogo.png")} alt='error'/>
+            Login
           </Header>
           <Form onSubmit={this.handleSubmit} size="large">
             <Segment stacked>

@@ -41,11 +41,14 @@ class MetaPanel extends React.Component {
     if (privateChannel) return null
 
     return (
+      <div>
       <Segment loading={!channel}>
         <Header as="h3" attached="top">
           About # {channel && channel.name}
         </Header>
         <Accordion styled attached="true">
+
+
           <Accordion.Title
             active={activeIndex === 0}
             index={0}
@@ -58,6 +61,8 @@ class MetaPanel extends React.Component {
           <Accordion.Content active={activeIndex === 0}>
             {channel && channel.details}
           </Accordion.Content>
+
+
 
           <Accordion.Title
             active={activeIndex === 1}
@@ -74,6 +79,7 @@ class MetaPanel extends React.Component {
             </List>
           </Accordion.Content>
           
+
           <Accordion.Title
             active={activeIndex === 2}
             index={2}
@@ -89,8 +95,27 @@ class MetaPanel extends React.Component {
               {channel && channel.createdBy.name}
             </Header>
           </Accordion.Content>
+
+          <Accordion.Title
+            active={activeIndex === 3}
+            index={3}
+            onClick={this.setActiveIndex}
+          >
+            <Icon name="dropdown" />
+            <Icon name="video " />
+            Video Conference
+          </Accordion.Title>
+          <Accordion.Content active={activeIndex === 3}>
+            <button onClick={
+              (e)=> {e.preventDefault();
+              window.location.href='https://occupier.davidcaleb.repl.co/';
+            }}
+            >Start Conference
+              </button>
+          </Accordion.Content>
         </Accordion>
       </Segment>
+      </div>
     )
   }
 }

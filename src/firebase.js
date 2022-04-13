@@ -4,13 +4,13 @@ import 'firebase/database'
 import 'firebase/storage'
 
 var firebaseConfig = {
-  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
-  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
-  databaseURL: process.env.REACT_APP_FIREBASE_DATABASE_URL,
-  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
-  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
-  appId: process.env.REACT_APP_FIREBASE_APP_ID
+  apiKey: "AIzaSyAj0XwVLZmPZKBPxtt2FiqC5MnQbEEZOvw",
+  authDomain: "slack-clone-34543.firebaseapp.com",
+  databaseURL: "https://slack-clone-34543-default-rtdb.firebaseio.com",
+  projectId: "slack-clone-34543",
+  storageBucket: "slack-clone-34543.appspot.com",
+  messagingSenderId: "235418569207",
+  appId: "1:235418569207:web:d0f0e1547f56c34abd46f2"
 };
 firebase.initializeApp(firebaseConfig);
 
