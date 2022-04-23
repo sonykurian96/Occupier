@@ -62,7 +62,7 @@ class Login extends React.Component {
         <Grid.Column style={{ maxWidth: 450 }}>
           <Header as="h1" icon color="violet" textAlign="center">
             <img style={{width:390,height:100}} src={require("./alogo.png")} alt='error'/>
-            Login
+            Login with your organization ID
           </Header>
           <Form onSubmit={this.handleSubmit} size="large">
             <Segment stacked>
@@ -97,7 +97,7 @@ class Login extends React.Component {
               >
                 Submit
               </Button>
-              <Message>Don't have an account? <Link to="/register">Register</Link></Message>
+              <Message>Connect - Communicate - Collaborate</Message>
             </Segment>
           </Form>
           {errors.length > 0 && (
