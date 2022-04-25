@@ -36,8 +36,9 @@ body,
 }
 
 /* Message.js */
+/* add reply */
 .message__self {
-  border-left: 2px solid orange;
+  border-left: 2px solid blue;
   padding-left: 8px
 }
 
@@ -175,6 +176,8 @@ body,
   right: 0;
   width: 120px;
 }
+
+
 
 .skeleton__details {
   background-color: rgba(58, 57, 57, 0.3);

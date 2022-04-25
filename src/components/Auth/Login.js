@@ -60,7 +60,7 @@ class Login extends React.Component {
     return (
       <Grid textAlign="center" verticalAlign="middle" className="app">
         <Grid.Column style={{ maxWidth: 450 }}>
-          <Header as="h1" icon color="violet" textAlign="center">
+          <Header as="h1" icon color="orange" textAlign="center">
             <img style={{width:390,height:100}} src={require("./alogo.png")} alt='error'/>
             Login with your organization ID
           </Header>
@@ -91,7 +91,7 @@ class Login extends React.Component {
               <Button
                 disabled={loading}
                 className={loading ? 'loading' : ''}
-                color="violet"
+                color="orange"
                 fluid
                 size="large"
               >

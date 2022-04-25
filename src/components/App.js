@@ -51,8 +51,8 @@ const mapStateToProps = state => ({
   currentChannel: state.channel.currentChannel,
   isPrivateChannel: state.channel.isPrivateChannel,
   userPosts: state.channel.userPosts,
-  primaryColor: state.colors.primaryColor,
-  secondaryColor: state.colors.secondaryColor
+  primaryColor: 'black',
+  secondaryColor: 'rgba(0, 0, 0, 0.5)'
 })
 
 export default connect(mapStateToProps)(App);
